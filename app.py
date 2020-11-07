@@ -52,7 +52,7 @@ if __name__ == "__main__":
     if 'Jacket' in cart.items and 'T-shirt' in cart.items:
         item = cart.items['Jacket']
         J = item.qnt
-        S = cart.items['T-shirt']
+        S = cart.items['T-shirt'].qnt
         D = J//S
 
         jacketOffer = Offer(
