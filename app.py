@@ -53,11 +53,11 @@ if __name__ == "__main__":
         item = cart.items['Jacket']
         J = item.qnt
         S = cart.items['T-shirt'].qnt
-        D = J//S
+        D = S//2
 
         jacketOffer = Offer(
             item,
-            [item.qnt > 0, related.qnt//2 > 0],
+            [J > 0, S//2 > 0],
             Curr(item.price.cents, 'cents').multiply(mods[item.name] * min(J, D)).pounds,
             f"50% off {item.name}:",
             mods
