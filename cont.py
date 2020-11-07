@@ -49,14 +49,16 @@ if __name__ == "__main__":
         offers.append(shoesOffer)
 
     # applying Jacket offer
-    if 'Jacket' in cart.items:
+    if 'Jacket' in cart.items and 'T-shirt' in cart.items:
         item = cart.items['Jacket']
-        related = cart.items['T-shirt']
+        J = item.qnt
+        S = cart.items['T-shirt']
+        D = J//S
 
         jacketOffer = Offer(
             item,
             [item.qnt > 0, related.qnt//2 > 0],
-            Curr(item.cost.cents, 'cents').multiply(mods[item.name]).pounds,
+            Curr(item.price.cents, 'cents').multiply(mods[item.name] * min(J, D)).pounds,
             f"50% off {item.name}:",
             mods
         )
